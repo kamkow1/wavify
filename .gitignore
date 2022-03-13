@@ -18,6 +18,9 @@ client/.npm/
 
 #server
 
+#jwt
+server/constants.ts
+
 #env variables
 server/.env
 
