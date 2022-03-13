@@ -18,6 +18,8 @@ client/.npm/
 
 #server
 
+server/dist
+
 #jwt
 server/constants.ts
 
