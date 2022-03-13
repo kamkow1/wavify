@@ -8,10 +8,10 @@ async function bootstrap() {
     app.use(cookieParser());
     app.setGlobalPrefix('api');
     app.enableCors({
-        origin: 'http://localhost:3000',
+        origin: 'http://localhost:8080',
         credentials: true
     });
-    await app.listen(3000);
+    await app.listen(8080);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map
