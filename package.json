@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "node clear-console.js && cd client && npm start",
     "server": "node clear-console.js && cd server && npm start",
-    "start": "node clear-console.js && concurrently \"npm run server\" \"npm run client\""
+    "start": "node clear-console.js && concurrently \"npm run server:prod\" \"npm run client\""
   },
   "author": "kamkow1",
   "license": "ISC",
