@@ -11,7 +11,7 @@ import { jwtConstants } from 'src/constants';
     TypeOrmModule.forFeature([UserEntity]),
     JwtModule.register({
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '100000s' }
+      signOptions: { expiresIn: '1800s' }
     })
   ],
   providers: [UserService],

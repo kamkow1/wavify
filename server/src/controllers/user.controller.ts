@@ -36,6 +36,8 @@ export class UserController {
 
     @Get('get-profile-info')
     async getProfileInfo(@Headers() headers: Headers) {
+        if (headers['authorization'] === undefined) throw new UnauthorizedException();
+
         const token = headers['authorization'].replace('Bearer ', '');
 
         const data = await this.jwtService.verifyAsync(token);
