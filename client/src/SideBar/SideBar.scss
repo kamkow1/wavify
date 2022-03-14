@@ -1,0 +1,51 @@
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 58px 0 0;
+    width: 240px;
+    z-index: 999;
+    height: 100%;
+    float: left;
+    background-color: $indigo-500;
+}
+
+.sidebar-element {
+    margin-top: 20px;
+    color: $gray-200;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: $indigo-500;
+    transition: background-color 0.3s ease;
+
+    box-shadow: 0px 6px 0px -4px rgba(66, 68, 90, 1);
+}
+
+.sidebar-element:hover {
+    background-color: $indigo-400;
+    color: $gray-800;
+    transition: background-color 0.3s ease;
+}
+
+#sidebar-header {
+    color: $gray-200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#sidebar-logo {
+    margin-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.sidebar-element-icon {
+    margin-right: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
