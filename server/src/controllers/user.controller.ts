@@ -38,8 +38,6 @@ export class UserController {
     async getProfileInfo(@Headers() headers: Headers) {
         const token = headers['authorization'].replace('Bearer ', '');
 
-        console.log(token);
-
         const data = await this.jwtService.verifyAsync(token);
 
         if(!data) throw new UnauthorizedException();
