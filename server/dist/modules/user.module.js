@@ -22,7 +22,7 @@ UserModule = __decorate([
             typeorm_1.TypeOrmModule.forFeature([user_entity_1.UserEntity]),
             jwt_1.JwtModule.register({
                 secret: constants_1.jwtConstants.secret,
-                signOptions: { expiresIn: '100000s' }
+                signOptions: { expiresIn: '1800s' }
             })
         ],
         providers: [user_service_1.UserService],

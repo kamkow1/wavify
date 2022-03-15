@@ -1,19 +1,25 @@
 import './LoginForm.scss';
 import React from 'react';
 import axios from 'axios'
+import { GLOBAL_STATE } from '../global.state';
+import { Navigate } from 'react-router-dom';
 
 interface IState { 
     login: string,
-    password: string
+    password: string,
+
+    redirect: boolean
 }
 
-export class LoginForm extends React.Component<{}, IState> {
-    constructor(props: {}) {
+export default class LoginForm extends React.Component<any, IState> {
+    constructor(props: any) {
         super(props);
 
         this.state = {
             login: '',
-            password: ''
+            password: '',
+
+            redirect: false
         };
 
         this.handleLoginChange = this.handleLoginChange.bind(this);
@@ -36,17 +42,21 @@ export class LoginForm extends React.Component<{}, IState> {
             login: this.state.login,
             password: this.state.password
         }).then(res => {
-            sessionStorage.setItem("TOKEN", res.data.token);
+            GLOBAL_STATE.TOKEN = res.data.token;
 
             console.log(res.data.token);
 
             // request user profile
             axios.get('/api/user/get-profile-info', {
                 headers: {
-                    'Authorization': `Bearer ${sessionStorage.getItem("TOKEN")}`
+                    'Authorization': `Bearer ${GLOBAL_STATE.TOKEN}`
                 }
             }).then(res => {
-                console.log(res.data);
+                GLOBAL_STATE.CURRENT_USER = res.data;
+                    
+                this.setState({...this.state, redirect: true});
+
+                console.log(this.state);
             });
         });
 
@@ -54,6 +64,8 @@ export class LoginForm extends React.Component<{}, IState> {
     }
 
     render () {
+        if (this.state.redirect) return <Navigate to='/' />;
+
         return (
             <div id="form-wrapper">
                 <form onSubmit={e => e.preventDefault()}>

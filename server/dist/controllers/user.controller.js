@@ -47,6 +47,8 @@ let UserController = class UserController {
         return { token: jwt };
     }
     async getProfileInfo(headers) {
+        if (headers['authorization'] === undefined)
+            throw new common_1.UnauthorizedException();
         const token = headers['authorization'].replace('Bearer ', '');
         const data = await this.jwtService.verifyAsync(token);
         if (!data)
