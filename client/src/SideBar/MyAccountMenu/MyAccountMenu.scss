@@ -4,6 +4,17 @@
     margin-top: 5px;
 }
 
-.header-item {
-    background-color: $indigo-600;
+#header-item {
+    background: $blue-300;
+}
+
+.display-profile {
+    position: relative;
+    display: block;
+}
+
+.display-username {
+    position: relative;
+    display: block;
+    text-decoration: underline $danger;
 }
