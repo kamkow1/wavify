@@ -1,8 +1,8 @@
 import './LoginForm.scss';
 import React from 'react';
 import axios from 'axios'
-import { GLOBAL_STATE } from '../global.state';
 import { Navigate } from 'react-router-dom';
+import { UserStore } from '../store';
 
 interface IState { 
     login: string,
@@ -11,7 +11,7 @@ interface IState {
     redirect: boolean
 }
 
-export default class LoginForm extends React.Component<any, IState> {
+export default class LoginForm extends React.Component<{ store: UserStore }, IState> {
     constructor(props: any) {
         super(props);
 
@@ -42,25 +42,20 @@ export default class LoginForm extends React.Component<any, IState> {
             login: this.state.login,
             password: this.state.password
         }).then(res => {
-            GLOBAL_STATE.TOKEN = res.data.token;
+            localStorage.setItem("TOKEN", res.data.token);
 
             console.log(res.data.token);
 
             // request user profile
             axios.get('/api/user/get-profile-info', {
                 headers: {
-                    'Authorization': `Bearer ${GLOBAL_STATE.TOKEN}`
+                    'Authorization': `Bearer ${localStorage.getItem("TOKEN")}`
                 }
-            }).then(res => {
-                GLOBAL_STATE.CURRENT_USER = res.data;
-                    
+            }).then(res => {  
+                this.props.store.setCurrentUser(res.data); 
                 this.setState({...this.state, redirect: true});
-
-                console.log(this.state);
             });
         });
-
-        console.log(this.state);
     }
 
     render () {

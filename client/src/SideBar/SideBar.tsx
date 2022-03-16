@@ -1,14 +1,17 @@
-import { MyAccountMenu } from './MyAccountMenu/MyAccountMenu';
+import MyAccountMenu from './MyAccountMenu/MyAccountMenu';
 import './SideBar.scss';
 import React from 'react';
 import Collapse from 'react-bootstrap/Collapse';
+import { UserStore } from '../store';
+import { observer } from 'mobx-react';
 
 interface IState {
     isAccountMenuOpen: boolean;
 }
 
-export class SideBar extends React.Component<{}, IState> {
-    constructor(props: {}) {
+@observer
+export default class SideBar extends React.Component<{ store: UserStore }, IState> {
+    constructor(props: any) {
         super(props);
 
         this.state = {
@@ -34,6 +37,7 @@ export class SideBar extends React.Component<{}, IState> {
                      <div className='position-sticky'>
                              <h3 id='sidebar-header'>
                                  wavify
+
                                  <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" className="bi bi-music-note-list" id='sidebar-logo' viewBox="0 0 16 16">
                                      <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
                                      <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
@@ -87,7 +91,7 @@ export class SideBar extends React.Component<{}, IState> {
 
                                     <Collapse in={this.state.isAccountMenuOpen}>
                                         <div>
-                                            <MyAccountMenu />
+                                            <MyAccountMenu usernameToDisplay={this.props.store.currentUser.login} />
                                         </div>
                                     </Collapse>
                                  </div>
