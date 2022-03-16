@@ -13,9 +13,8 @@ const store = new UserStore();
 
 render(
   <React.StrictMode>
-        <SideBar store={store} />    
-
         <BrowserRouter>
+          <SideBar store={store} /> 
           <Routes>
             <Route path="/" element={<App />} />
             <Route path="/login" element={<LoginForm store={store} />} />
