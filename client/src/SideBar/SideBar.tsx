@@ -108,7 +108,7 @@ export default class SideBar extends React.Component<{ store: UserStore }, IStat
 
                                     <Collapse in={this.state.isAccountMenuOpen} dimension="width">
                                         <div>
-                                            <MyAccountMenu />
+                                            <MyAccountMenu store={this.props.store} />
                                         </div>
                                     </Collapse>
                                 </div>
