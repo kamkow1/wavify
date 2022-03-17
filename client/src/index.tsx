@@ -16,7 +16,7 @@ render(
         <BrowserRouter>
           <SideBar store={store} /> 
           <Routes>
-            <Route path="/" element={<App />} />
+            <Route path="/" element={<App store={store} />} />
             <Route path="/login" element={<LoginForm store={store} />} />
           </Routes>
         </BrowserRouter>
