@@ -19,7 +19,7 @@ export default class MyAccountMenu extends React.Component<{ store: UserStore },
     render() {
         return(
             <ul className="list-group" id="menu-box">    
-                <li className="list-group-item logout"
+                <li className="list-group-item btn" id="logout"
                     onClick={this.handleLogout}>
                     wyloguj
                 </li>
