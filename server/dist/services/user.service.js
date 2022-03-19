@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserService = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
-const user_entity_1 = require("../models/user.entity");
+const user_entity_1 = require("../models/user/user.entity");
 const typeorm_2 = require("typeorm");
 let UserService = class UserService {
     constructor(userRepository) {

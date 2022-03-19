@@ -1,4 +1,4 @@
-import { User } from 'src/models/user.interface';
+import { User } from 'src/models/user/user.interface';
 import { UserService } from '../services/user.service';
 import { JwtService } from '@nestjs/jwt';
 export declare class UserController {

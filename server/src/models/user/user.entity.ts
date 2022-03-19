@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn, Timestamp } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn, Timestamp } from "typeorm";
+import { TrackEntity } from "../track/track.entity";
 
 @Entity('users')
 export class UserEntity {
@@ -16,4 +17,7 @@ export class UserEntity {
 
     @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     joined_at: Timestamp;
+
+    @OneToMany(type => TrackEntity, track => track.id)
+    tracks: TrackEntity[];
 }

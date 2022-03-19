@@ -1,5 +1,5 @@
 import { BadRequestException, Body, Controller, Get, Headers, Post, UnauthorizedException } from '@nestjs/common';
-import { User } from 'src/models/user.interface';
+import { User } from 'src/models/user/user.interface';
 import { UserService } from '../services/user.service';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';

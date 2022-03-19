@@ -6,6 +6,9 @@ import { AppService } from './app.service';
 import { UserModule } from './modules/user.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { TrackService } from './services/track.service';
+import { TrackModule } from './modules/track.module';
+import { TrackController } from './controllers/track.controller';
 
 @Module({
   imports: [
@@ -22,7 +25,8 @@ import { join } from 'path';
       synchronize: true,
     }),
     UserModule,
-    ServeStaticModule.forRoot({ rootPath: join(__dirname, '../../client/build/') })
+    ServeStaticModule.forRoot({ rootPath: join(__dirname, '../../client/build/') }),
+    TrackModule,
   ],
   controllers: [AppController],
   providers: [AppService],

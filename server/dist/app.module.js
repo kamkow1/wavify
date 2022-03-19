@@ -15,6 +15,7 @@ const app_service_1 = require("./app.service");
 const user_module_1 = require("./modules/user.module");
 const serve_static_1 = require("@nestjs/serve-static");
 const path_1 = require("path");
+const track_module_1 = require("./modules/track.module");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -32,7 +33,8 @@ AppModule = __decorate([
                 synchronize: true,
             }),
             user_module_1.UserModule,
-            serve_static_1.ServeStaticModule.forRoot({ rootPath: (0, path_1.join)(__dirname, '../../client/build/') })
+            serve_static_1.ServeStaticModule.forRoot({ rootPath: (0, path_1.join)(__dirname, '../../client/build/') }),
+            track_module_1.TrackModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
